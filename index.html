@@ -678,8 +678,25 @@
       box-shadow: var(--shadow);
     }
     @media (max-width: 700px) {
-      .hero { grid-template-columns: 1fr; gap: 22px; }
-      .headshot-wrap { width: 150px; }
+      .hero {
+        grid-template-columns: minmax(0, 1fr) clamp(100px, 30vw, 150px);
+        gap: 12px 18px;
+      }
+      .hero-copy { display: contents; }
+      .hero-copy > * { grid-column: 1 / -1; }
+      .hero-copy > .eyebrow { grid-row: 1; }
+      .hero-copy > h1 {
+        grid-column: 1;
+        grid-row: 2;
+        font-size: clamp(2.5rem, 13vw, 4rem);
+        margin: 0 0 10px;
+      }
+      .headshot-wrap {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        align-self: center;
+      }
       .headshot { aspect-ratio: 1 / 1; object-position: 50% 18%; }
     }
   </style>
